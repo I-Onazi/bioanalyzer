@@ -92,7 +92,7 @@ function App() {
 
   const handleStrandSelect = useCallback((type: StrandType) => {
     handleRunAnalysis(type);
-  }, []);
+  }, [handleRunAnalysis]);
 
   const handleRunAnalysis = useCallback(async (strand: StrandType) => {
     if (!detection) return;
