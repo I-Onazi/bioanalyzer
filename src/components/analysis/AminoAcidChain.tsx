@@ -10,12 +10,11 @@ import ExplanationPanel from '../education/ExplanationPanel';
 
 interface Props {
   codons: CodonDetail[];
-  proteinSequence: string;
 }
 
 type DisplayMode = 'letter' | 'abbreviation' | 'full';
 
-export default function AminoAcidChain({ codons, proteinSequence }: Props) {
+export default function AminoAcidChain({ codons }: Props) {
   const [mode, setMode] = useState<DisplayMode>('abbreviation');
 
   // Filter out stop codons from the chain display

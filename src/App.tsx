@@ -17,7 +17,6 @@ import TranslationView from './components/analysis/TranslationView';
 import AminoAcidChain from './components/analysis/AminoAcidChain';
 import ProteinCard from './components/analysis/ProteinCard';
 import DatabaseSearch from './components/analysis/DatabaseSearch';
-import ExplanationPanel from './components/education/ExplanationPanel';
 import Toast from './components/ui/Toast';
 import { submitSequence, uploadFile, runFullAnalysis, searchProtein } from './services/api';
 import type {
@@ -31,7 +30,6 @@ function App() {
   // ── State ──────────────────────────────────────────────────────
   const [currentStep, setCurrentStep] = useState<AnalysisStep>('input');
   const [detection, setDetection] = useState<SequenceDetection | null>(null);
-  const [strandType, setStrandType] = useState<StrandType>('coding');
   const [analysis, setAnalysis] = useState<FullAnalysis | null>(null);
   const [loading, setLoading] = useState(false);
   const [dbSearchLoading, setDbSearchLoading] = useState(false);
@@ -93,7 +91,6 @@ function App() {
   }, [detection]);
 
   const handleStrandSelect = useCallback((type: StrandType) => {
-    setStrandType(type);
     handleRunAnalysis(type);
   }, []);
 
@@ -136,7 +133,6 @@ function App() {
     setCurrentStep('input');
     setDetection(null);
     setAnalysis(null);
-    setStrandType('coding');
     setError(null);
   }, []);
 
@@ -258,7 +254,6 @@ function App() {
               {analysis.translation.protein_sequence && (
                 <AminoAcidChain
                   codons={analysis.translation.codons}
-                  proteinSequence={analysis.translation.protein_sequence}
                 />
               )}
               <div className="flex justify-center gap-4">
