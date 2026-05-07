@@ -1,0 +1,139 @@
+/* ── Tailwind Directives ──────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts Import ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ── Base Styles ─────────────────────────────────────────────────── */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+/* ── Component Styles ────────────────────────────────────────────── */
+@layer components {
+  .glass-card {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .gradient-text {
+    background: linear-gradient(to right, #36a8f8, #34d399, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-helix {
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(12, 141, 233, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+  }
+
+  .sequence-text {
+    @apply font-mono text-sm tracking-wider leading-relaxed break-all;
+  }
+
+  .base-A { @apply text-green-400 font-semibold; }
+  .base-T { @apply text-red-400 font-semibold; }
+  .base-U { @apply text-orange-400 font-semibold; }
+  .base-C { @apply text-blue-400 font-semibold; }
+  .base-G { @apply text-yellow-400 font-semibold; }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-dna {
+    background: rgba(12, 141, 233, 0.2);
+    color: #7cc5fc;
+    border: 1px solid rgba(12, 141, 233, 0.3);
+  }
+  .badge-rna {
+    background: rgba(236, 72, 153, 0.2);
+    color: #f9a8d4;
+    border: 1px solid rgba(236, 72, 153, 0.3);
+  }
+  .badge-invalid {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 text-white font-semibold rounded-xl transition-all duration-300;
+    background: linear-gradient(to right, #0c8de9, #006fc7);
+    box-shadow: 0 10px 15px -3px rgba(12, 141, 233, 0.25);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(to right, #36a8f8, #0c8de9);
+    box-shadow: 0 10px 15px -3px rgba(12, 141, 233, 0.4);
+  }
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 font-semibold rounded-xl transition-all duration-300;
+    background: rgba(51, 65, 85, 0.5);
+    color: #e2e8f0;
+    border: 1px solid rgba(71, 85, 105, 0.5);
+  }
+  .btn-secondary:hover {
+    background: #334155;
+  }
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+
+  .step-badge {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white shadow-lg;
+    background: linear-gradient(to bottom right, #0c8de9, #10b981);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
