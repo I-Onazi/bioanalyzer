@@ -80,20 +80,6 @@ function App() {
     }
   }, []);
 
-  const handleProceedFromDetection = useCallback(() => {
-    if (!detection) return;
-    if (detection.seq_type === 'DNA') {
-      setCurrentStep('strand-select');
-    } else {
-      // RNA — skip strand selection, run full analysis directly
-      handleRunAnalysis('coding');
-    }
-  }, [detection]);
-
-  const handleStrandSelect = useCallback((type: StrandType) => {
-    handleRunAnalysis(type);
-  }, [handleRunAnalysis]);
-
   const handleRunAnalysis = useCallback(async (strand: StrandType) => {
     if (!detection) return;
     setLoading(true);
@@ -111,6 +97,20 @@ function App() {
       setLoading(false);
     }
   }, [detection]);
+
+  const handleProceedFromDetection = useCallback(() => {
+    if (!detection) return;
+    if (detection.seq_type === 'DNA') {
+      setCurrentStep('strand-select');
+    } else {
+      // RNA — skip strand selection, run full analysis directly
+      handleRunAnalysis('coding');
+    }
+  }, [detection, handleRunAnalysis]);
+
+  const handleStrandSelect = useCallback((type: StrandType) => {
+    handleRunAnalysis(type);
+  }, [handleRunAnalysis]);
 
   const handleDatabaseSearch = useCallback(async () => {
     if (!analysis?.protein?.sequence) return;
